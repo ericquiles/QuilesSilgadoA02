@@ -5,4 +5,5 @@
 ## EJERCICIO 01
 
 Crea un nuevo PROYECTO y crea el contador que creamos en android(sin funcionalidad por ahora).
-A02.PNG
+![Texto alternativo](A02.PNG)
+
