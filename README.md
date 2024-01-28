@@ -13,7 +13,7 @@ Este proyecto es una aplicación Flutter que implementa un contador simple con t
 
 A continuación se muestra una captura de pantalla de la aplicación en acción:
 
-![Captura de Pantalla](A02.PNG)
+![Captura de Pantalla](A03(2).PNG)
 
 ## Funcionalidades Implementadas
 
