@@ -4,7 +4,62 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class CustomButton extends StatelessWidget {
+  final String buttonText;
+  final Function onPressed;
+
+  CustomButton({required this.buttonText, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        onPressed();
+      },
+      style: ElevatedButton.styleFrom(
+        primary: Color(0xFF1E1E1E),
+        fixedSize: Size(120, 40),
+      ),
+      child: Text(
+        buttonText,
+        style: TextStyle(
+          fontFamily: 'PoppinsBold',
+          fontSize: 20,
+          color: Colors.white,
+        ),
+      ),
+    );
+  }
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int counter = 0;
+
+  void incrementCounter() {
+    setState(() {
+      counter++;
+    });
+  }
+
+  void decrementCounter() {
+    setState(() {
+      if (counter > 0) {
+        counter--;
+      }
+    });
+  }
+
+  void resetCounter() {
+    setState(() {
+      counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +79,7 @@ class MyApp extends StatelessWidget {
               ),
               SizedBox(height: 150),
               Text(
-                '0',
+                '$counter',
                 style: TextStyle(
                   fontFamily: 'PoppinsThin',
                   color: Colors.white,
@@ -35,49 +90,25 @@ class MyApp extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF1E1E1E),
-                      fixedSize: Size(120, 40),
-                    ),
-                    child: Text(
-                      '-',
-                      style: TextStyle(
-                          fontFamily: 'PoppinsBold',
-                          fontSize: 20,
-                          color: Colors.white),
-                    ),
+                  CustomButton(
+                    buttonText: '-',
+                    onPressed: () {
+                      decrementCounter();
+                    },
                   ),
                   SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF201F1F),
-                      fixedSize: Size(120, 40),
-                    ),
-                    child: Text(
-                      'RESET',
-                      style: TextStyle(
-                          fontFamily: 'PoppinsBold',
-                          fontSize: 20,
-                          color: Colors.white),
-                    ),
+                  CustomButton(
+                    buttonText: 'RESET',
+                    onPressed: () {
+                      resetCounter();
+                    },
                   ),
                   SizedBox(width: 5),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      primary: Color(0xFF1E1D1D),
-                      fixedSize: Size(120, 40),
-                    ),
-                    child: Text(
-                      '+',
-                      style: TextStyle(
-                          fontFamily: 'PoppinsBold',
-                          fontSize: 20,
-                          color: Colors.white),
-                    ),
+                  CustomButton(
+                    buttonText: '+',
+                    onPressed: () {
+                      incrementCounter();
+                    },
                   ),
                 ],
               ),
